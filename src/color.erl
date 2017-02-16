@@ -10,17 +10,20 @@
 -author("QiLi").
 
 %% API
--export([convert/2]).
+%%-export([convert/2]).
+-compile(export_all).
 
--record(color,{r,g,b}).
+%%-record(color,{x,r,g,b}).
 
 convert(Depth,Max) ->
   F = Depth / Max,
   A=F*4,
   X= trunc(A),
   Y= trunc(255*(A-X)),
-  #color{r=Y,g=0,b=0},
-  #color{r=255,g=Y,b=0},
-  #color{r=255-Y,g=255,b=0},
-  #color{r=0,g=255,b=Y},
-  #color{r=0,g=255-Y,b=255}.
+  case X of
+    0 -> {Y, 0, 0};
+    1 -> {255, Y, 0};
+    2 ->{255-Y, 255, 0};
+    3 -> {0, 255, Y };
+    4 -> {0, 255-Y, 255}
+  end.
