@@ -23,7 +23,7 @@ add(A,B) ->
 
 sqr(A)->
   {Re,Im}=A,
-  {math:pow(Re,2)+math:pow(Im,2),2*Re*Im}.
+  {math:pow(Re,2)-math:pow(Im,2),2*Re*Im}.
 
 abs(A) ->
   {Re,Im}=A,
