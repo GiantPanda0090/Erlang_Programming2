@@ -1,37 +1,17 @@
-%%%-------------------------------------------------------------------
-%%% @author QiLi
-%%% @copyright (C) 2017, <COMPANY>
-%%% @doc
-%%%
-%%% @end
-%%% Created : 15. feb 2017 18:14
-%%%-------------------------------------------------------------------
 -module(cmplx).
--author("QiLi").
 
-%% API
--compile(export_all).
-%%-export([]).
-
-new(Re,Im) ->
-  {Re,Im}.
-
-add(A,B) ->
-  {Rea,Ima}=A,
-  {Reb,Imb}=B,
-  {Rea+Reb,Ima+Imb}.
-
-sqr(A)->
-  {Re,Im}=A,
-  {math:pow(Re,2)-math:pow(Im,2),2*Re*Im}.
-
-abs(A) ->
-  {Re,Im}=A,
-  math:sqrt(math:pow(Re,2)+math:pow(Im,2)).
+-export([new/2, add/2, sqr/1, abs/1]).
 
 
+new(X, Y) ->
+  {X, Y}.
 
+add({X1, Y1}, {X2, Y2}) ->
+  {X1 + X2, Y1 + Y2}.
 
+sqr({X, Y}) ->
+  {X * X - Y * Y, 2 * X * Y}.
 
-
+abs({X, Y}) ->
+  math:sqrt(X * X + Y * Y).
 

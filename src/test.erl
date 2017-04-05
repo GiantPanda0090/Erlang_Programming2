@@ -76,7 +76,7 @@ nth(N-1,T)
   end.
 
 number(L) ->
-  [H|T]=L,
+  [_ | T] = L,
   if
     T ==[] -> 1;
     true ->1+number(T)
