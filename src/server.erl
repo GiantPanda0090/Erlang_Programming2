@@ -1,14 +1,14 @@
 -module(server).
 
--export([start/7]).
+-export([start/8]).
 
 %%% The start/7 process will start a mandel server and a print process
 
-start(Width, Height, X, Y, K, Depth, File) ->
-  {ok, spawn(fun() -> init(Width, Height, X, Y, K, Depth, File) end)}.
+start(Width, Height, X, Y, K, Depth, File,Pid) ->
+  {ok, spawn(fun() -> init(Width, Height, X, Y, K, Depth, File,Pid) end)}.
 
-init(Width, Height, X, Y, K, Depth, File) ->
-  {ok, Ctrl} = print:start(File, Width, Height),
+init(Width, Height, X, Y, K, Depth, File,Pid) ->
+  {ok, Ctrl} = print:start(File, Width, Height,Pid),
   %% Sending lambda expressions works if client side has exactly the
   %% same code base. We try to avoid this when doin it in class.
 

@@ -3,7 +3,7 @@
 -export([start/1]).
 
 start(Server) ->
-  spawn(fun() -> init(Server) end).
+  {ok, spawn(fun() -> init(Server) end)}.
 
 init(Server) ->
   client(Server, 0).
@@ -20,7 +20,7 @@ client(Server, N) ->
       Ctrl ! {row, H, Row},
       client(Server, N + 1);
     done ->
-      io:format("client completed ~w rounds~n", [N])
+      io:format("client completed ~w rounds~n",[N])
   end.
 
 row(0, _, _, _, Row) ->

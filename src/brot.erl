@@ -33,11 +33,11 @@ test(I, Z, C, M) ->
 	A = cmplx:abs(Z),
 	if
 		A < 2.0 ->
-			io:format("abs ~w~n", [A]),
+			%%io:format("abs ~w~n", [A]),
 			Z1 = cmplx:add(cmplx:sqr(Z), C),
 			test(I + 1, Z1, C, M);
 		true ->
-			io:format("final abs ~w~n", [A]),
+			%%io:format("final abs ~w~n", [A]),
 			I
 	end.
 
